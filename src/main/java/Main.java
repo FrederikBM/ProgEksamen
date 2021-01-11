@@ -27,4 +27,11 @@ public class Main extends PApplet{
         size(500, 500);
     }
 
+    @Override
+    public void setup(){
+
+    }
+
+
+
 }
