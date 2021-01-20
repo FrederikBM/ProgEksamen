@@ -7,12 +7,14 @@ import java.sql.*;
 public class Main extends PApplet{
     private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
     private Connection connection = null;
+    String test = "Blæst";
 
     public static void main(String[] args) {
         PApplet.main("Main");
     }
 
     public Main() {
+
         try {
             connection = DriverManager.getConnection(databaseURL);
             println("Connected to MS Access database. ");
@@ -41,7 +43,7 @@ public class Main extends PApplet{
         Statement s = null;
         try {
             s = connection.createStatement();
-            ResultSet wind = s.executeQuery("SELECT [ID], [Vindstyrke] FROM [Blæst]");
+            ResultSet wind = s.executeQuery("SELECT [ID], [Vindstyrke] FROM '"+test+"'");
             //ResultSet studentList = s.executeQuery("SELECT [Bruger], [Karakter] FROM Logins WHERE Laerer=false");
 
             while (wind.next()) {
