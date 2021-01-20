@@ -42,17 +42,13 @@ public class Main extends PApplet{
         try {
             s = connection.createStatement();
             ResultSet wind = s.executeQuery("SELECT [ID], [Vindstyrke] FROM [Blæst]");
-            ResultSet studentList = s.executeQuery("SELECT [Bruger], [Karakter] FROM Logins WHERE Laerer=false");
+            //ResultSet studentList = s.executeQuery("SELECT [Bruger], [Karakter] FROM Logins WHERE Laerer=false");
 
             while (wind.next()) {
                 String rsWindSpeed = wind.getString(1);
-
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
-
-
-
 }
