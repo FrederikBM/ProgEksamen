@@ -21,7 +21,6 @@ public class PowerGeneration extends PApplet {
         this.columnE=columnE;
     }
 
-
     void connectDatabaseLogin() {
         Statement s = null;
         try {
@@ -32,8 +31,19 @@ public class PowerGeneration extends PApplet {
             while (wind.next()) {
                 String rsWindSpeed = wind.getString(1);
             }
+
+            if(){
+
+            }
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }
+    }
+
+    void animation(){
+        if(frameCount%10==0){
+
         }
     }
 }
