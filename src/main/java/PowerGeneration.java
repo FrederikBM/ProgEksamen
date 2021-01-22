@@ -13,7 +13,7 @@ public class PowerGeneration extends PApplet {
     String columnP = "";
     String columnE = "";
 
-    PowerGeneration(int updateRate, String table, String columnP, String columnE, PApplet p){
+    public PowerGeneration(int updateRate, String table, String columnP, String columnE, PApplet p){
         this.p=p;
         this.updateRate=updateRate;
         this.table=table;
@@ -32,9 +32,9 @@ public class PowerGeneration extends PApplet {
                 String rsWindSpeed = wind.getString(1);
             }
 
-            if(){
+            /*if(){
 
-            }
+            }*/
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
