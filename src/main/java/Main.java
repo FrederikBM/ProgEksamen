@@ -8,6 +8,8 @@ public class Main extends PApplet{
     private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
     private Connection connection = null;
     String test = "Blaest";
+    Windspeed ws = new Windspeed(10, "Blæst", "Vindstyrke", "Energi", this);
+    Waterlevel wl = new Waterlevel(10, "Regn", "Vandstand", "Energi", this);
 
     public static void main(String[] args) {
         PApplet.main("Main");
