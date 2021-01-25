@@ -8,7 +8,7 @@ public class Main extends PApplet{
     private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
     private Connection connection = null;
     String test = "Blaest";
-    Windspeed ws = new Windspeed(10, "Blæst", "Vindstyrke", "Energi", this);
+    Windspeed ws = new Windspeed(10, "Blaest", "Vindstyrke", "Energi", this);
     Waterlevel wl = new Waterlevel(10, "Regn", "Vandstand", "Energi", this);
 
     public static void main(String[] args) {
@@ -33,7 +33,7 @@ public class Main extends PApplet{
 
     @Override
     public void setup(){
-        connectDatabaseLogin();
+        ws.connectDatabaseLogin();
 
     }
 
@@ -46,7 +46,7 @@ public class Main extends PApplet{
         Statement s = null;
         try {
             s = connection.createStatement();
-            ResultSet wind = s.executeQuery("SELECT [ID], [Vindstyrke] FROM Blæst");
+            ResultSet wind = s.executeQuery("SELECT [ID], [Vindstyrke] FROM Blaest");
             //ResultSet studentList = s.executeQuery("SELECT [Bruger], [Karakter] FROM Logins WHERE Laerer=false");
 
             while (wind.next()) {

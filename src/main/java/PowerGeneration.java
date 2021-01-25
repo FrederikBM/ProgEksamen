@@ -1,11 +1,9 @@
 import processing.core.PApplet;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class PowerGeneration extends PApplet {
+    private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
     PApplet p;
     private Connection connection = null;
     int updateRate;
@@ -19,17 +17,27 @@ public class PowerGeneration extends PApplet {
         this.table=table;
         this.columnP=columnP;
         this.columnE=columnE;
+
+        try {
+            connection = DriverManager.getConnection(databaseURL);
+            println("Connected to MS Access database. ");
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
     }
 
     void connectDatabaseLogin() {
+
+
         Statement s = null;
         try {
             s = connection.createStatement();
-            ResultSet wind = s.executeQuery("SELECT [ID], [Vindstyrke] FROM '"+table+"'");
+            ResultSet wind = s.executeQuery("SELECT [ID], [Vindstyrke], [Energi] FROM "+table+"");
             //ResultSet studentList = s.executeQuery("SELECT [Bruger], [Karakter] FROM Logins WHERE Laerer=false");
 
             while (wind.next()) {
                 String rsWindSpeed = wind.getString(1);
+                System.out.println(rsWindSpeed);
             }
 
             /*if(){
@@ -42,7 +50,7 @@ public class PowerGeneration extends PApplet {
     }
 
     void animation(){
-        if(frameCount%10==0){
+        if(frameCount%updateRate==0){
 
         }
     }
