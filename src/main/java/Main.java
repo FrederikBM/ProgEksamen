@@ -3,7 +3,7 @@ import processing.core.PVector;
 import processing.data.StringList;
 
 import java.sql.*;
-
+//max strøm-værdi på 100, man starter spillet på 75. 10 strøm trækkes fra hvert sekund.
 public class Main extends PApplet{
     private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
     private Connection connection = null;

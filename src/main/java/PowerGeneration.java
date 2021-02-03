@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 
 import java.sql.*;
-
+//strømgeneratoren laver 5 strøm i sekundet.
 public class PowerGeneration extends PApplet {
     private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
     PApplet p;
@@ -51,6 +51,11 @@ public class PowerGeneration extends PApplet {
 
     void animation(){
         if(frameCount%updateRate==0){
+
+        }
+    }
+    void click(){
+        if(mousePressed&&mouseX<x1&&mouseX>x2&&mouseY<y1&&mouseY>y2){
 
         }
     }
