@@ -2,6 +2,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 import java.sql.*;
+
 //strømgeneratoren laver 5 strøm i sekundet.
 public class PowerGeneration extends PApplet {
     private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
@@ -11,13 +12,21 @@ public class PowerGeneration extends PApplet {
     String table = "";
     String columnP = "";
     String columnE = "";
+    int xpos = 0;
+    int ypos = 0;
+    int xlength = 0;
+    int ylength = 0;
 
-    public PowerGeneration(int updateRate, String table, String columnP, String columnE, PApplet p) {
+    public PowerGeneration(int updateRate, String table, String columnP, String columnE, int xpos, int ypos, int xlength, int ylength, PApplet p) {
         this.p = p;
         this.updateRate = updateRate;
         this.table = table;
         this.columnP = columnP;
         this.columnE = columnE;
+        this.xpos = xpos;
+        this.ypos = ypos;
+        this.xlength = xlength;
+        this.ylength = ylength;
 
         try {
             connection = DriverManager.getConnection(databaseURL);
@@ -59,9 +68,12 @@ public class PowerGeneration extends PApplet {
 
 
 
-    void click() {
-        if (mousePressed && mouseX < x1 && mouseX > x2 && mouseY < y1 && mouseY > y2) {
-
+   void click() {
+        p.fill(255);
+        p.ellipse(xpos,ypos,10,10);
+        p.ellipse(xpos+xlength,ypos+ylength,10,10);
+        if (p.mouseX > xpos && p.mouseX < xpos+xlength && p.mouseY > ypos && p.mouseY < ypos+ylength) {
+            System.out.println("hi");
         }
     }
 }

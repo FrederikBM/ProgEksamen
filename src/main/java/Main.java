@@ -1,15 +1,19 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 import processing.data.StringList;
 
 import java.sql.*;
-//max strøm-værdi på 100, man starter spillet på 75. 10 strøm trækkes fra hvert sekund.
+
 public class Main extends PApplet{
     private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
     private Connection connection = null;
     String test = "Blaest";
-    Windspeed ws = new Windspeed(10, "Blaest", "Vindstyrke", "Energi", this);
-    Waterlevel wl = new Waterlevel(10, "Regn", "Vandstand", "Energi", this);
+    Windspeed ws = new Windspeed(10, "Blaest", "Vindstyrke", "Energi", 180, 100, 50,50, this);
+    Waterlevel wl = new Waterlevel(10, "Regn", "Vandstand", "Energi", 150, 450, 50,50,this);
+    PImage house;
+    PImage regn1;
+    PImage regn2;
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -34,12 +38,20 @@ public class Main extends PApplet{
     @Override
     public void setup(){
         ws.connectDatabaseLogin();
-
+        house = loadImage("Huset.jpg");
+        regn1 = loadImage("regn1.png");
+        regn2 = loadImage("regn2.png");
+        image(house, 0, 0);
     }
 
     @Override
     public void draw(){
+    }
 
+    @Override
+    public void mouseReleased(){
+        ws.click();
+        wl.click();
     }
 
     void connectDatabaseLogin() {
@@ -53,7 +65,6 @@ public class Main extends PApplet{
                 String rsWindSpeed = wind.getString(1);
                 System.out.println(rsWindSpeed);
             }
-
 
 
         } catch (SQLException throwables) {
