@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Waterlevel extends PowerGeneration{
 
@@ -13,5 +14,6 @@ public class Waterlevel extends PowerGeneration{
         this.ypos=ypos;
         this.xlength=xlength;
         this.ylength=ylength;
+
     }
 }

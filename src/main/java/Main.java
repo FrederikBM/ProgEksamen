@@ -9,11 +9,12 @@ public class Main extends PApplet{
     private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
     private Connection connection = null;
     String test = "Blaest";
-    Windspeed ws = new Windspeed(10, "Blaest", "Vindstyrke", "Energi", 180, 100, 50,50, this);
-    Waterlevel wl = new Waterlevel(10, "Regn", "Vandstand", "Energi", 150, 450, 50,50,this);
     PImage house;
     PImage regn1;
     PImage regn2;
+    Windspeed ws = new Windspeed(100, "Blaest", "Vindstyrke", "Energi", 180, 100, 50, 50 , this);
+    Waterlevel wl = new Waterlevel(100, "Regn", "Vandstand", "Energi", 150, 450, 50, 50, this);
+
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -46,6 +47,7 @@ public class Main extends PApplet{
 
     @Override
     public void draw(){
+        ws.animation(regn1,regn2);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class PowerGeneration extends PApplet {
     int xlength = 0;
     int ylength = 0;
 
-    public PowerGeneration(int updateRate, String table, String columnP, String columnE, int xpos, int ypos, int xlength, int ylength, PApplet p) {
+    PowerGeneration(int updateRate, String table, String columnP, String columnE, int xpos, int ypos, int xlength, int ylength, PApplet p) {
         this.p = p;
         this.updateRate = updateRate;
         this.table = table;
@@ -59,10 +59,14 @@ public class PowerGeneration extends PApplet {
         }
     }
 
-    void animation() {
+    void animation(PImage IPa, PImage IPb) {
         boolean shift = false;
-        if (frameCount % updateRate == 0 && shift == false) {
-            //image(regn1,0,0);
+        if (frameCount % updateRate == 0) {
+            p.image(IPa,0,0);
+            shift=true;
+        } else if(frameCount % updateRate+(updateRate/2) == 0){
+            p.image(IPb,0,0);
+            shift=false;
         }
     }
 
