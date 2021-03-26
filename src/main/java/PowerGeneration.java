@@ -4,7 +4,7 @@ import processing.core.PImage;
 import java.sql.*;
 
 //strømgeneratoren laver 5 strøm i sekundet.
-public class PowerGeneration extends PApplet {
+public class PowerGeneration {
     private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
     PApplet p;
     private Connection connection = null;
@@ -30,7 +30,7 @@ public class PowerGeneration extends PApplet {
 
         try {
             connection = DriverManager.getConnection(databaseURL);
-            println("Connected to MS Access database. ");
+            p.println("Connected to MS Access database. ");
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
@@ -60,13 +60,10 @@ public class PowerGeneration extends PApplet {
     }
 
     void animation(PImage IPa, PImage IPb) {
-        boolean shift = false;
-        if (frameCount % updateRate == 0) {
+        if (p.frameCount % updateRate == 0) {
             p.image(IPa,0,0);
-            shift=true;
-        } else if(frameCount % updateRate+(updateRate/2) == 0){
+        } else{
             p.image(IPb,0,0);
-            shift=false;
         }
     }
 
