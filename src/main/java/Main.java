@@ -10,10 +10,16 @@ public class Main extends PApplet{
     private Connection connection = null;
     String test = "Blaest";
     PImage house;
+    PImage cloud;
     PImage regn1;
     PImage regn2;
-    Windspeed ws = new Windspeed(10, "Blaest", "Vindstyrke", "Energi", 180, 100, 50, 50 , this);
-    Waterlevel wl = new Waterlevel(10, "Regn", "Vandstand", "Energi", 150, 450, 50, 50, this);
+    PImage generator1;
+    PImage generator2;
+    PImage windmill1;
+    PImage windmill2;
+    boolean shift = true;
+    Windspeed ws = new Windspeed(50, "Blaest", "Vindstyrke", "Energi", 160, 90, 50, 50 , this);
+    Waterlevel wl = new Waterlevel(50, "Regn", "Vandstand", "Energi", 150, 450, 50, 50, this);
 
 
     public static void main(String[] args) {
@@ -39,21 +45,46 @@ public class Main extends PApplet{
     @Override
     public void setup(){
         ws.connectDatabaseLogin();
-        house = loadImage("Huset.jpg");
+        house = loadImage("Huset.png");
+        cloud = loadImage("skyer.png");
         regn1 = loadImage("regn1.png");
         regn2 = loadImage("regn2.png");
-        image(house, 0, 0);
+        generator1 = loadImage("generator1.png");
+        generator2 = loadImage("generator2.png");
+        windmill1 = loadImage("vindmlle1.png");
+        windmill2 = loadImage("vindmlle2.png");
+
     }
 
     @Override
     public void draw(){
-        //ws.animation(regn1,regn2);
+        clear();
+        image(house, 0, 0);
+        wl.animation(generator1,generator2);
+        ws.animation(windmill1,windmill2);
+        animation(regn1,regn2);
+        image(cloud,0,0);
     }
 
     @Override
     public void mouseReleased(){
         ws.click();
         wl.click();
+    }
+
+    void animation(PImage PIa, PImage PIb) {
+        int updateRate = 10;
+
+        if (frameCount % updateRate == 0&& shift) {
+            shift=false;
+        } else if(frameCount % updateRate == 0&& !shift){
+            shift=true;
+        }
+        if(shift){
+            image(PIa,0,-75);
+        } else {
+            image(PIb,0,-75);
+        }
     }
 
     void connectDatabaseLogin() {

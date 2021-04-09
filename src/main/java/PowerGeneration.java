@@ -16,6 +16,7 @@ public class PowerGeneration {
     int ypos = 0;
     int xlength = 0;
     int ylength = 0;
+    boolean shift = true;
 
     PowerGeneration(int updateRate, String table, String columnP, String columnE, int xpos, int ypos, int xlength, int ylength, PApplet p) {
         this.p = p;
@@ -42,12 +43,11 @@ public class PowerGeneration {
         Statement s = null;
         try {
             s = connection.createStatement();
-            ResultSet wind = s.executeQuery("SELECT [ID], [Vindstyrke], [Energi] FROM " + table);
-            //ResultSet studentList = s.executeQuery("SELECT [Bruger], [Karakter] FROM Logins WHERE Laerer=false");
+            ResultSet generating = s.executeQuery("SELECT [ID], [Risiko], [Energi] FROM " + table);
 
-            while (wind.next()) {
-                String rsWindSpeed = wind.getString(1);
-                System.out.println(rsWindSpeed);
+            while (generating.next()) {
+                String rsRisiko = generating.getString(1);
+                System.out.println(rsRisiko);
             }
 
             /*if(){
@@ -59,23 +59,48 @@ public class PowerGeneration {
         }
     }
 
-    void animation(PImage IPa, PImage IPb) {
-        if (p.frameCount % updateRate == 0) {
-            p.image(IPa,0,0);
-        } else{
-            p.image(IPb,0,0);
+    void animation(PImage PIa, PImage PIb) {
+        if (p.frameCount % updateRate == 0&& shift) {
+            shift=false;
+        } else if(p.frameCount % updateRate == 0&& !shift){
+            shift=true;
+        }
+        if(shift){
+            p.image(PIa,xpos,ypos);
+        } else {
+            p.image(PIb,xpos,ypos);
         }
     }
 
 
 
-   void click() {
+    void click() {
+
+        Statement s = null;
+        try {
+            s = connection.createStatement();
+            ResultSet generating = s.executeQuery("SELECT [ID], [Risiko], [Energi] FROM " + table);
+
+            while (generating.next()) {
+                String rsRisiko = generating.getString(1);
+                System.out.println(rsRisiko);
+
+                if (p.mouseX > xpos && p.mouseX < xpos+xlength && p.mouseY > ypos && p.mouseY < ypos+ylength) {
+
+                    System.out.println("clicked");
+                }
+
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
         p.fill(255);
         p.ellipse(xpos,ypos,10,10);
         p.ellipse(xpos+xlength,ypos+ylength,10,10);
-        if (p.mouseX > xpos && p.mouseX < xpos+xlength && p.mouseY > ypos && p.mouseY < ypos+ylength) {
-            System.out.println("hi");
-        }
+
+
     }
 }
-
