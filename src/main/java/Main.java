@@ -44,7 +44,7 @@ public class Main extends PApplet{
 
     @Override
     public void setup(){
-        ws.connectDatabaseLogin();
+
         house = loadImage("Huset.png");
         cloud = loadImage("skyer.png");
         regn1 = loadImage("regn1.png");
@@ -60,6 +60,8 @@ public class Main extends PApplet{
     public void draw(){
         clear();
         image(house, 0, 0);
+        ws.connectDatabaseLogin();
+        wl.connectDatabaseLogin();
         wl.animation(generator1,generator2);
         ws.animation(windmill1,windmill2);
         animation(regn1,regn2);

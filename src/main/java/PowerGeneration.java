@@ -17,8 +17,14 @@ public class PowerGeneration {
     int xlength = 0;
     int ylength = 0;
     boolean shift = true;
+    int currentDataSelection = 40;
+    int deteriorationValue = 1;
+    int repairValue = 1;
+    float energyLevel = 0;
+    String energyLevelString="";
 
-    PowerGeneration(int updateRate, String table, String columnP, String columnE, int xpos, int ypos, int xlength, int ylength, PApplet p) {
+    PowerGeneration(int updateRate, String table, String columnP, String columnE,
+                    int xpos, int ypos, int xlength, int ylength, PApplet p) {
         this.p = p;
         this.updateRate = updateRate;
         this.table = table;
@@ -38,21 +44,25 @@ public class PowerGeneration {
     }
 
     void connectDatabaseLogin() {
-
+        /*if(p.frameCount % 50 == 0) {
+            currentDataSelection -= deteriorationValue;
+            System.out.println(currentDataSelection);
+        }*/
 
         Statement s = null;
         try {
             s = connection.createStatement();
             ResultSet generating = s.executeQuery("SELECT [ID], [Risiko], [Energi] FROM " + table);
+            ResultSet energy = s.executeQuery("SELECT [Energi] From "+table+" WHERE [Risiko]=" + currentDataSelection);
 
             while (generating.next()) {
-                String rsRisiko = generating.getString(1);
-                System.out.println(rsRisiko);
+                String rsRisiko = generating.getString(2);
             }
 
-            /*if(){
-
-            }*/
+            while(energy.next()){
+                energyLevelString=energy.getString(1);
+                energyLevel=Float.parseFloat(energyLevelString);
+            }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -60,6 +70,7 @@ public class PowerGeneration {
     }
 
     void animation(PImage PIa, PImage PIb) {
+
         if (p.frameCount % updateRate == 0&& shift) {
             shift=false;
         } else if(p.frameCount % updateRate == 0&& !shift){
@@ -82,11 +93,12 @@ public class PowerGeneration {
             ResultSet generating = s.executeQuery("SELECT [ID], [Risiko], [Energi] FROM " + table);
 
             while (generating.next()) {
-                String rsRisiko = generating.getString(1);
-                System.out.println(rsRisiko);
+                String rsRisiko = generating.getString(2);
+                String rsEnergi = generating.getString(3);
+                //System.out.println(rsRisiko);
 
                 if (p.mouseX > xpos && p.mouseX < xpos+xlength && p.mouseY > ypos && p.mouseY < ypos+ylength) {
-
+                    currentDataSelection+=repairValue;
                     System.out.println("clicked");
                 }
 
