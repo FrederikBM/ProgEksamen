@@ -17,6 +17,7 @@ public class PowerGeneration {
     int xlength = 0;
     int ylength = 0;
     boolean shift = true;
+    boolean shiftButton = false;
     int currentDataSelection = 40;
     int deteriorationValue = 1;
     int repairValue = 1;
@@ -86,6 +87,7 @@ public class PowerGeneration {
 
 
     void click() {
+        int runs=0;
 
         Statement s = null;
         try {
@@ -98,6 +100,11 @@ public class PowerGeneration {
                 //System.out.println(rsRisiko);
 
                 if (p.mouseX > xpos && p.mouseX < xpos+xlength && p.mouseY > ypos && p.mouseY < ypos+ylength) {
+                    if(runs>0){
+                        break;
+                    } else {
+                        runs++;
+                    }
                     currentDataSelection+=repairValue;
                     System.out.println("clicked");
                 }

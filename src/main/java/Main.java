@@ -20,6 +20,7 @@ public class Main extends PApplet{
     boolean shift = true;
     Windspeed ws = new Windspeed(50, "Blaest", "Vindstyrke", "Energi", 160, 90, 50, 50 , this);
     Waterlevel wl = new Waterlevel(50, "Regn", "Vandstand", "Energi", 150, 450, 50, 50, this);
+    LightsOut edison = new LightsOut(50,80,200,50,50,this);
 
 
     public static void main(String[] args) {
@@ -72,6 +73,7 @@ public class Main extends PApplet{
     public void mouseReleased(){
         ws.click();
         wl.click();
+        edison.click();
     }
 
     void animation(PImage PIa, PImage PIb) {
