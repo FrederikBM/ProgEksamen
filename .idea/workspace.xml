@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f3a6ed25-e1d5-44b5-8dfa-a537483f54ad" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Database.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Database.accdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Database.laccdb" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.1\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1qvJEoX1DpOxCeVejL72xQGMJ2x" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="ProgEksamen" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SQLPlugin.ProjectConfiguration">
+    <queries />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f3a6ed25-e1d5-44b5-8dfa-a537483f54ad" name="Default Changelist" comment="" />
+      <created>1617954021094</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617954021094</updated>
+    </task>
+    <task id="LOCAL-00001" summary="made with dissapointment">
+      <created>1617957397792</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1617957397792</updated>
+    </task>
+    <task id="LOCAL-00002" summary="made with boredom">
+      <created>1617975892981</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1617975892981</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="made with dissapointment" />
+    <MESSAGE value="made with boredom" />
+    <option name="LAST_COMMIT_MESSAGE" value="made with boredom" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="340" y="0" key="CommitChangelistDialog2" timestamp="1617975892191">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="340" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1617975892191" />
+    <state width="1493" height="154" key="GridCell.Tab.0.bottom" timestamp="1617974683585">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="154" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1617974683585" />
+    <state width="1493" height="154" key="GridCell.Tab.0.center" timestamp="1617974683585">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="154" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1617974683585" />
+    <state width="1493" height="154" key="GridCell.Tab.0.left" timestamp="1617974683585">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="154" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1617974683585" />
+    <state width="1493" height="154" key="GridCell.Tab.0.right" timestamp="1617974683585">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="154" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1617974683585" />
+    <state x="349" y="155" key="IDE.errors.dialog" timestamp="1617967522206">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="349" y="155" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1617967522206" />
+    <state x="361" y="132" key="Vcs.Push.Dialog.v2" timestamp="1617975897978">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1617975897978" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617955852117">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1617955852117" />
+  </component>
+</project>
