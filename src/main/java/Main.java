@@ -17,10 +17,11 @@ public class Main extends PApplet{
     PImage generator2;
     PImage windmill1;
     PImage windmill2;
+    PImage vovse;
     boolean shift = true;
-    Windspeed ws = new Windspeed(50, "Blaest", "Vindstyrke", "Energi", 160, 90, 50, 50 , this);
-    Waterlevel wl = new Waterlevel(50, "Regn", "Vandstand", "Energi", 150, 450, 50, 50, this);
-    LightsOut edison = new LightsOut(50,80,200,50,50,this);
+    Windspeed ws = new Windspeed(50, "Blaest", "Vindstyrke", "Energi", 160, 90, 90, 90 , this);
+    Waterlevel wl = new Waterlevel(50, "Regn", "Vandstand", "Energi", 150, 450, 70, 50, this);
+    LightsOut edison = new LightsOut(50,80,200,50,50, 500,350,this);
 
 
     public static void main(String[] args) {
@@ -54,6 +55,7 @@ public class Main extends PApplet{
         generator2 = loadImage("generator2.png");
         windmill1 = loadImage("vindmlle1.png");
         windmill2 = loadImage("vindmlle2.png");
+        vovse = loadImage("vovse.png");
 
     }
 
@@ -65,6 +67,7 @@ public class Main extends PApplet{
         wl.connectDatabaseLogin();
         wl.animation(generator1,generator2);
         ws.animation(windmill1,windmill2);
+        edison.animation(windmill1,windmill1,vovse);
         animation(regn1,regn2);
         image(cloud,0,0);
     }
