@@ -18,11 +18,13 @@ public class PowerGeneration {
     int ylength = 0;
     boolean shift = true;
     boolean shiftButton = false;
-    int currentDataSelection = 40;
+    int currentDataSelection = 1;
     int deteriorationValue = 1;
     int repairValue = 1;
     float energyLevel = 0;
     String energyLevelString="";
+    String risc;
+    String energyProd;
 
     PowerGeneration(int updateRate, String table, String columnP, String columnE,
                     int xpos, int ypos, int xlength, int ylength, PApplet p) {
@@ -44,47 +46,26 @@ public class PowerGeneration {
         }
     }
 
-    void connectDatabaseLogin() {
-        /*if(p.frameCount % 50 == 0) {
-            currentDataSelection -= deteriorationValue;
-            System.out.println(currentDataSelection);
-        }*/
 
+    void energyProduction(){
         Statement s = null;
         try {
             s = connection.createStatement();
-            ResultSet generating = s.executeQuery("SELECT [ID], [Risiko], [Energi] FROM " + table);
-            ResultSet energy = s.executeQuery("SELECT [Energi] From "+table+" WHERE [Risiko]=" + currentDataSelection);
+            ResultSet rsRisc = s.executeQuery("SELECT [Risiko], [Energi] FROM " + table + " WHERE [Risiko] = " +currentDataSelection);
 
-            while (generating.next()) {
-                String rsRisiko = generating.getString(2);
-            }
+            while (rsRisc.next()) {
+                risc = rsRisc.getString(1);
+                energyProd = rsRisc.getString(2);
 
-            while(energy.next()){
-                energyLevelString=energy.getString(1);
-                energyLevel=Float.parseFloat(energyLevelString);
+                if(p.frameCount%updateRate==0&&deteriorationValue<40){
+                    currentDataSelection+=deteriorationValue;
+                }
             }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
-
-    void animation(PImage PIa, PImage PIb) {
-
-        if (p.frameCount % updateRate == 0&& shift) {
-            shift=false;
-        } else if(p.frameCount % updateRate == 0&& !shift){
-            shift=true;
-        }
-        if(shift){
-            p.image(PIa,xpos,ypos);
-        } else {
-            p.image(PIb,xpos,ypos);
-        }
-    }
-
-
 
     void click() {
         int runs=0;
@@ -99,16 +80,16 @@ public class PowerGeneration {
                 String rsEnergi = generating.getString(3);
                 //System.out.println(rsRisiko);
 
-                if (p.mouseX > xpos && p.mouseX < xpos+xlength && p.mouseY > ypos && p.mouseY < ypos+ylength) {
+                if (p.mouseX > xpos && p.mouseX < xpos+xlength && p.mouseY > ypos && p.mouseY < ypos+ylength&&currentDataSelection!=1) {
                     if(runs>0){
                         break;
                     } else {
                         runs++;
                     }
-                    currentDataSelection+=repairValue;
+                    currentDataSelection-=repairValue;
+                    energyProduction();
                     System.out.println("clicked");
                 }
-
 
             }
 
@@ -120,6 +101,22 @@ public class PowerGeneration {
         p.ellipse(xpos,ypos,10,10);
         p.ellipse(xpos+xlength,ypos+ylength,10,10);
 
+    }
 
+    void animation(PImage PIa, PImage PIb, int textX, int textY) {
+
+        if (p.frameCount % updateRate == 0&& shift) {
+            shift=false;
+        } else if(p.frameCount % updateRate == 0&& !shift){
+            shift=true;
+        }
+        if(shift){
+            p.image(PIa,xpos,ypos);
+        } else {
+            p.image(PIb,xpos,ypos);
+        }
+        p.fill(255);
+        p.text(table+" is currently at "+risc+"/40.0 risc",textX,textY);
+        p.text(table+" is currently generating " +energyProd+" per tick", textX,textY+20);
     }
 }

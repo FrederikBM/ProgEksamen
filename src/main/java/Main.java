@@ -1,7 +1,5 @@
 import processing.core.PApplet;
 import processing.core.PImage;
-import processing.core.PVector;
-import processing.data.StringList;
 
 import java.sql.*;
 
@@ -9,7 +7,8 @@ public class Main extends PApplet{
     private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
     private Connection connection = null;
     String test = "Blaest";
-    PImage house;
+    PImage house1;
+    PImage house2;
     PImage cloud;
     PImage regn1;
     PImage regn2;
@@ -19,8 +18,8 @@ public class Main extends PApplet{
     PImage windmill2;
     PImage vovse;
     boolean shift = true;
-    Windspeed ws = new Windspeed(50, "Blaest", "Vindstyrke", "Energi", 160, 90, 90, 90 , this);
-    Waterlevel wl = new Waterlevel(50, "Regn", "Vandstand", "Energi", 150, 450, 70, 50, this);
+    Windspeed ws = new Windspeed(20, "Blaest", "Vindstyrke", "Energi", 160, 90, 90, 90 , this);
+    Waterlevel wl = new Waterlevel(20, "Regn", "Vandstand", "Energi", 150, 450, 70, 50, this);
     LightsOut edison = new LightsOut(50,80,200,50,50, 500,350,this);
 
 
@@ -47,7 +46,8 @@ public class Main extends PApplet{
     @Override
     public void setup(){
 
-        house = loadImage("Huset.png");
+        house1 = loadImage("Huset1.png");
+        house2 = loadImage("Huset2.png");
         cloud = loadImage("skyer.png");
         regn1 = loadImage("regn1.png");
         regn2 = loadImage("regn2.png");
@@ -62,13 +62,20 @@ public class Main extends PApplet{
     @Override
     public void draw(){
         clear();
-        image(house, 0, 0);
-        ws.connectDatabaseLogin();
-        wl.connectDatabaseLogin();
-        wl.animation(generator1,generator2);
-        ws.animation(windmill1,windmill2);
-        edison.animation(windmill1,windmill1,vovse);
+
+        if(!edison.shiftButton) {
+            image(house1, 0, 0);
+            ws.energyProduction();
+            wl.energyProduction();
+        } else {
+            image(house2,0,0);
+        }
+
+        wl.animation(generator1,generator2,250,475);
+        ws.animation(windmill1,windmill2,250,435);
+        edison.animation(vovse);
         animation(regn1,regn2);
+
         image(cloud,0,0);
     }
 

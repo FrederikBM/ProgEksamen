@@ -1,4 +1,3 @@
-import com.sun.scenario.effect.impl.prism.ps.PPSInvertMaskPeer;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -16,7 +15,7 @@ public class LightsOut {
     int ylength = 0;
     int vovseXpos;
     int vovseYpos;
-    boolean shiftButton = false;
+    public boolean shiftButton = false;
     int currentEnergy = 100;
 
     LightsOut(int updateRate, int xpos, int ypos, int xlength, int ylength, int vovseXpos, int vovseYpos, PApplet p){
@@ -82,23 +81,25 @@ public class LightsOut {
 
     }
 
-    void animation(PImage PIa, PImage PIb, PImage PIc){
+    void animation(PImage PIc){
         p.image(PIc,vovseXpos,vovseYpos);
 
         if(!shiftButton){
-            //p.image(PIa,xpos,ypos);
             if(p.frameCount % updateRate == 0){
-                currentEnergy-=25;
-                System.out.println("Eyy");
-                if(currentEnergy<=75){
-                    vovseXpos-=20;
-                    System.out.println("Eyyx2");
+                currentEnergy-=15;
+                if(vovseXpos<=500){
+                    vovseXpos+=5;
                 }
             }
         } else {
-            //p.image(PIb,xpos,ypos);
-            p.fill(0);
-            p.rect(xpos,ypos,50,50);
+            if(p.frameCount % updateRate == 0){
+                    vovseXpos -= 15;
+                System.out.println(vovseXpos);
+            }
+        }
+        if(vovseXpos<=220){
+            p.fill(255,0,0);
+            p.rect(0,0,500,500);
         }
     }
 }
