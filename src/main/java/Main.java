@@ -17,7 +17,8 @@ public class Main extends PApplet {
     PImage windmill1;
     PImage windmill2;
     PImage vovse;
-    int timer;
+    boolean end=false;
+    int endtime;
     boolean shift = true;
     Windspeed ws = new Windspeed(20, "Blaest", "Vindstyrke", "Energi", 160, 90, 90, 90, this);
     Waterlevel wl = new Waterlevel(20, "Regn", "Vandstand", "Energi", 150, 450, 70, 50, this);
@@ -28,16 +29,6 @@ public class Main extends PApplet {
         PApplet.main("Main");
     }
 
-    public Main() {
-
-        try {
-            connection = DriverManager.getConnection(databaseURL);
-            println("Connected to MS Access database. ");
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
-        }
-
-    }
 
     @Override
     public void settings() {
@@ -46,7 +37,7 @@ public class Main extends PApplet {
 
     @Override
     public void setup() {
-
+        //Her fylder vi bare de PImage-pladser som vi har gjordt plads til i hukommelsen
         house1 = loadImage("Huset1.png");
         house2 = loadImage("Huset2.png");
         cloud = loadImage("skyer.png");
@@ -62,12 +53,13 @@ public class Main extends PApplet {
 
     @Override
     public void draw() {
+        //Her er det bare at vi lægger tingene ind, så programmet laver noget
         clear();
-
+        //Kun hvis lyset er tændt skal maskinerne gå i stykker + animationer for huset og lamperne.
         if (!edison.shiftButton) {
             image(house1, 0, 0);
-            ws.energyProduction();
-            wl.energyProduction();
+            ws.machineDeterioration();
+            wl.machineDeterioration();
         } else {
             image(house2, 0, 0);
         }
@@ -77,17 +69,50 @@ public class Main extends PApplet {
         wl.animation(generator1, generator2, 250, 475);
         ws.animation(windmill1, windmill2, 250, 435);
         edison.animation(vovse);
-        text("Time Passed: " + timer+frameCount/60,30,30);
+
+        //Hvis hunden rammer huset, så slutter spillet, fordi man har tabt. Derefter har man muligheden for at starte forfra
+        //Der er ikke som sådan en måde at vinde på, men det er bare om at få en personlig highscore. Lidt på samme måde som Flappy Bird
+        if(edison.vovseXpos>220){
+            text("Time Passed: " + frameCount/60,30,30);
+        }
+            else if(edison.vovseXpos<220){
+                if(!end) {
+                    end=true;
+                    endtime = frameCount / 60;
+                }
+                if(end) {
+
+
+                    fill(150, 0, 0);
+                    rect(0, 0, 500, 500);
+                    fill(255);
+                    rect(200,225,100,50);
+                    fill(0);
+                    text("Time Passed: " + endtime,205,200);
+                    text("Prøv igen",225,250);
+                    if(mousePressed&&mouseX > 200 && mouseX < 200 + 100 && mouseY > 225 && mouseY < 225 + 50){
+                        end=false;
+                        edison.vovseXpos=500;
+                        edison.currentEnergy=100;
+                        edison.shiftButton=false;
+                        ws.currentDataSelection=1;
+                        wl.currentDataSelection=1;
+                        frameCount=0;
+                    }
+                }
+        }
     }
 
     @Override
     public void mouseReleased() {
+        //Klik kommandoerne
         ws.click();
         wl.click();
         edison.click();
     }
 
     void animation(PImage PIa, PImage PIb) {
+        //Regn animationerne
         int updateRate = 10;
 
         if (frameCount % updateRate == 0 && shift) {

@@ -17,12 +17,9 @@ public class PowerGeneration {
     int xlength = 0;
     int ylength = 0;
     boolean shift = true;
-    boolean shiftButton = false;
     int currentDataSelection = 1;
     int deteriorationValue = 1;
     int repairValue = 1;
-    float energyLevel = 0;
-    String energyLevelString="";
     String risc;
     String energyProd;
 
@@ -40,6 +37,7 @@ public class PowerGeneration {
         this.ylength = ylength;
 
         try {
+            //Laver en forbindelse til databasen
             connection = DriverManager.getConnection(databaseURL);
             p.println("Connected to MS Access database. ");
         } catch (SQLException throwable) {
@@ -48,18 +46,21 @@ public class PowerGeneration {
     }
 
 
-    void energyProduction(){
+    void machineDeterioration() {
         Statement s = null;
+        //Her får vi risikoværdien og energi-værdien, som vi så skriver på skærmen længere ned i koden
+        //Derudover er det også her man langsomt ødelægger generatorne
         try {
             s = connection.createStatement();
-            ResultSet rsRisc = s.executeQuery("SELECT [Risiko], [Energi] FROM " + table + " WHERE [Risiko] = " +currentDataSelection);
+            ResultSet rsRisc = s.executeQuery("SELECT [Risiko], [Energi] FROM " + table + " WHERE [Risiko] = " + currentDataSelection);
 
             while (rsRisc.next()) {
                 risc = rsRisc.getString(1);
                 energyProd = rsRisc.getString(2);
 
-                if(p.frameCount%updateRate==0&&deteriorationValue<40){
-                    currentDataSelection+=deteriorationValue;
+                //Her bliver vindmøllen og generatoren langsomt ødelagt
+                if (p.frameCount % updateRate == 0 && deteriorationValue < 40) {
+                    currentDataSelection += deteriorationValue;
                 }
             }
 
@@ -69,35 +70,33 @@ public class PowerGeneration {
     }
 
     void click() {
-
-                if (p.mouseX > xpos && p.mouseX < xpos+xlength && p.mouseY > ypos && p.mouseY < ypos+ylength&&currentDataSelection!=1) {
-                    currentDataSelection-=repairValue;
-                    energyProduction();
-                    System.out.println("clicked");
-                }
-
-        p.fill(255);
-        p.ellipse(xpos,ypos,10,10);
-        p.ellipse(xpos+xlength,ypos+ylength,10,10);
-
+        //Her kan man klikke på maskinerne for at reperere dem en smule.
+        //Vi kalder machineDeterioration så at den opdaterer korrekt, selvom lyset er slukket
+        if (p.mouseX > xpos && p.mouseX < xpos + xlength && p.mouseY > ypos && p.mouseY < ypos + ylength && currentDataSelection != 1) {
+            currentDataSelection -= repairValue;
+            machineDeterioration();
+            System.out.println("clicked");
+        }
     }
 
     void animation(PImage PIa, PImage PIb, int textX, int textY) {
+        //Her er animationerne for maskinerne og for teksten der viser hvor ødelagte de er, og hvor meget energi de producerer
+
         float riscFloat = Float.parseFloat(risc);
         float energyProdFloat = Float.parseFloat(energyProd);
 
-        if (p.frameCount % updateRate == 0&& shift) {
-            shift=false;
-        } else if(p.frameCount % updateRate == 0&& !shift){
-            shift=true;
+        if (p.frameCount % updateRate == 0 && shift) {
+            shift = false;
+        } else if (p.frameCount % updateRate == 0 && !shift) {
+            shift = true;
         }
-        if(shift){
-            p.image(PIa,xpos,ypos);
+        if (shift) {
+            p.image(PIa, xpos, ypos);
         } else {
-            p.image(PIb,xpos,ypos);
+            p.image(PIb, xpos, ypos);
         }
-        p.fill(riscFloat*6,energyProdFloat*40,0);
-        p.text(table+" is currently at "+risc+"/40.0 risc",textX,textY);
-        p.text(table+" is currently generating " +energyProd+" per tick", textX,textY+20);
+        p.fill(riscFloat * 6, energyProdFloat * 40, 0);
+        p.text(table + " is currently at " + risc + "/40.0 risc", textX, textY);
+        p.text(table + " is currently generating " + energyProd + " per tick", textX, textY + 20);
     }
 }
