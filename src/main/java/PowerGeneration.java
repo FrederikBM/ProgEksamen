@@ -26,6 +26,7 @@ public class PowerGeneration {
     String risc;
     String energyProd;
 
+
     PowerGeneration(int updateRate, String table, String columnP, String columnE,
                     int xpos, int ypos, int xlength, int ylength, PApplet p) {
         this.p = p;
@@ -68,34 +69,12 @@ public class PowerGeneration {
     }
 
     void click() {
-        int runs=0;
-
-        Statement s = null;
-        try {
-            s = connection.createStatement();
-            ResultSet generating = s.executeQuery("SELECT [ID], [Risiko], [Energi] FROM " + table);
-
-            while (generating.next()) {
-                String rsRisiko = generating.getString(2);
-                String rsEnergi = generating.getString(3);
-                //System.out.println(rsRisiko);
 
                 if (p.mouseX > xpos && p.mouseX < xpos+xlength && p.mouseY > ypos && p.mouseY < ypos+ylength&&currentDataSelection!=1) {
-                    if(runs>0){
-                        break;
-                    } else {
-                        runs++;
-                    }
                     currentDataSelection-=repairValue;
                     energyProduction();
                     System.out.println("clicked");
                 }
-
-            }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
 
         p.fill(255);
         p.ellipse(xpos,ypos,10,10);
@@ -104,6 +83,8 @@ public class PowerGeneration {
     }
 
     void animation(PImage PIa, PImage PIb, int textX, int textY) {
+        float riscFloat = Float.parseFloat(risc);
+        float energyProdFloat = Float.parseFloat(energyProd);
 
         if (p.frameCount % updateRate == 0&& shift) {
             shift=false;
@@ -115,7 +96,7 @@ public class PowerGeneration {
         } else {
             p.image(PIb,xpos,ypos);
         }
-        p.fill(255);
+        p.fill(riscFloat*6,energyProdFloat*40,0);
         p.text(table+" is currently at "+risc+"/40.0 risc",textX,textY);
         p.text(table+" is currently generating " +energyProd+" per tick", textX,textY+20);
     }

@@ -3,7 +3,7 @@ import processing.core.PImage;
 
 import java.sql.*;
 
-public class Main extends PApplet{
+public class Main extends PApplet {
     private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
     private Connection connection = null;
     String test = "Blaest";
@@ -17,10 +17,11 @@ public class Main extends PApplet{
     PImage windmill1;
     PImage windmill2;
     PImage vovse;
+    int timer;
     boolean shift = true;
-    Windspeed ws = new Windspeed(20, "Blaest", "Vindstyrke", "Energi", 160, 90, 90, 90 , this);
+    Windspeed ws = new Windspeed(20, "Blaest", "Vindstyrke", "Energi", 160, 90, 90, 90, this);
     Waterlevel wl = new Waterlevel(20, "Regn", "Vandstand", "Energi", 150, 450, 70, 50, this);
-    LightsOut edison = new LightsOut(50,80,200,50,50, 500,350,this);
+    LightsOut edison = new LightsOut(60, 80, 200, 50, 50, 500, 350, this);
 
 
     public static void main(String[] args) {
@@ -44,7 +45,7 @@ public class Main extends PApplet{
     }
 
     @Override
-    public void setup(){
+    public void setup() {
 
         house1 = loadImage("Huset1.png");
         house2 = loadImage("Huset2.png");
@@ -60,27 +61,27 @@ public class Main extends PApplet{
     }
 
     @Override
-    public void draw(){
+    public void draw() {
         clear();
 
-        if(!edison.shiftButton) {
+        if (!edison.shiftButton) {
             image(house1, 0, 0);
             ws.energyProduction();
             wl.energyProduction();
         } else {
-            image(house2,0,0);
+            image(house2, 0, 0);
         }
-
-        wl.animation(generator1,generator2,250,475);
-        ws.animation(windmill1,windmill2,250,435);
+        edison.energyConsumption("Blaest","Regn",ws.currentDataSelection,wl.currentDataSelection);
+        animation(regn1, regn2);
+        image(cloud, 0, 0);
+        wl.animation(generator1, generator2, 250, 475);
+        ws.animation(windmill1, windmill2, 250, 435);
         edison.animation(vovse);
-        animation(regn1,regn2);
-
-        image(cloud,0,0);
+        text("Time Passed: " + timer+frameCount/60,30,30);
     }
 
     @Override
-    public void mouseReleased(){
+    public void mouseReleased() {
         ws.click();
         wl.click();
         edison.click();
@@ -89,33 +90,15 @@ public class Main extends PApplet{
     void animation(PImage PIa, PImage PIb) {
         int updateRate = 10;
 
-        if (frameCount % updateRate == 0&& shift) {
-            shift=false;
-        } else if(frameCount % updateRate == 0&& !shift){
-            shift=true;
+        if (frameCount % updateRate == 0 && shift) {
+            shift = false;
+        } else if (frameCount % updateRate == 0 && !shift) {
+            shift = true;
         }
-        if(shift){
-            image(PIa,0,-75);
+        if (shift) {
+            image(PIa, 0, -75);
         } else {
-            image(PIb,0,-75);
-        }
-    }
-
-    void connectDatabaseLogin() {
-        Statement s = null;
-        try {
-            s = connection.createStatement();
-            ResultSet wind = s.executeQuery("SELECT [ID], [Vindstyrke] FROM Blaest");
-            //ResultSet studentList = s.executeQuery("SELECT [Bruger], [Karakter] FROM Logins WHERE Laerer=false");
-
-            while (wind.next()) {
-                String rsWindSpeed = wind.getString(1);
-                System.out.println(rsWindSpeed);
-            }
-
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            image(PIb, 0, -75);
         }
     }
 }

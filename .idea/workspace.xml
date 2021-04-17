@@ -5,20 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3bae9f0-a565-40e7-a1b5-9cd80fc55565" name="Default Changelist" comment="hmmmm...">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Huset1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Huset2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-04-2021_12_08__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-04-2021_12_08__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-04-2021_12_08__Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-04-2021_12_08__Default_Changelist_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-04-2021_12_09__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-04-2021_12_09__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-04-2021_12_08__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-04-2021_12_08__Default_Changelist_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-04-2021_12_09__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LightsOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LightsOut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/PowerGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PowerGeneration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Database.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Database.accdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Huset.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Database.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Database.accdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Database.laccdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Huset.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/LightsOut.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LightsOut.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/PowerGeneration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PowerGeneration.class" afterDir="false" />
@@ -50,6 +44,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="RunManager">
@@ -72,7 +67,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f3a6ed25-e1d5-44b5-8dfa-a537483f54ad" name="Default Changelist" comment="" />
+      <changelist id="b3bae9f0-a565-40e7-a1b5-9cd80fc55565" name="Default Changelist" comment="hmmmm..." />
       <created>1617954021094</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
