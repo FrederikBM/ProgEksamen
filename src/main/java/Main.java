@@ -73,7 +73,7 @@ public class Main extends PApplet {
         //Hvis hunden rammer huset, så slutter spillet, fordi man har tabt. Derefter har man muligheden for at starte forfra
         //Der er ikke som sådan en måde at vinde på, men det er bare om at få en personlig highscore. Lidt på samme måde som Flappy Bird
         if(edison.vovseXpos>220){
-            text("Time Passed: " + frameCount/60,30,30);
+            text("Time Passed: " + frameCount/60 + " seconds",30,30);
         }
             else if(edison.vovseXpos<220){
                 if(!end) {
@@ -88,8 +88,8 @@ public class Main extends PApplet {
                     fill(255);
                     rect(200,225,100,50);
                     fill(0);
-                    text("Time Passed: " + endtime,205,200);
-                    text("Prøv igen",225,250);
+                    text("Time Passed: " + endtime + " seconds",185,200);
+                    text("Try again",225,250);
                     if(mousePressed&&mouseX > 200 && mouseX < 200 + 100 && mouseY > 225 && mouseY < 225 + 50){
                         end=false;
                         edison.vovseXpos=500;
