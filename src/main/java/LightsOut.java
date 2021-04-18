@@ -9,10 +9,10 @@ public class LightsOut {
     PApplet p;
     private Connection connection = null;
     int updateRate;
-    int xpos = 0;
-    int ypos = 0;
-    int xlength = 0;
-    int ylength = 0;
+    int xpos;
+    int ypos;
+    int xlength;
+    int ylength;
     int vovseXpos;
     int vovseYpos;
     public boolean shiftButton = false;
