@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3bae9f0-a565-40e7-a1b5-9cd80fc55565" name="Default Changelist" comment="Nu er vi finito + det løse">
+    <list default="true" id="b3bae9f0-a565-40e7-a1b5-9cd80fc55565" name="Default Changelist" comment="Nu er vi finito + det løse v2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PowerGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PowerGeneration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/PowerGeneration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PowerGeneration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Database.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Database.accdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LightsOut.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LightsOut.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618757485155</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Nu er vi finito + det løse v2">
+      <created>1618759094533</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1618759094533</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,6 +152,7 @@
     <MESSAGE value="Så er vi finito" />
     <MESSAGE value="Nu er vi finito" />
     <MESSAGE value="Nu er vi finito + det løse" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nu er vi finito + det løse" />
+    <MESSAGE value="Nu er vi finito + det løse v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nu er vi finito + det løse v2" />
   </component>
 </project>
