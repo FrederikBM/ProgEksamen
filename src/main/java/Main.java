@@ -4,9 +4,6 @@ import processing.core.PImage;
 import java.sql.*;
 
 public class Main extends PApplet {
-    private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
-    private Connection connection = null;
-    String test = "Blaest";
     PImage house1;
     PImage house2;
     PImage cloud;

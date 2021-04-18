@@ -3,7 +3,6 @@ import processing.core.PImage;
 
 import java.sql.*;
 
-//strømgeneratoren laver 5 strøm i sekundet.
 public class PowerGeneration {
     private final String databaseURL = "jdbc:ucanaccess://src//main//resources//Database.accdb";
     PApplet p;
@@ -22,7 +21,6 @@ public class PowerGeneration {
     int repairValue = 1;
     String risc;
     String energyProd;
-
 
     PowerGeneration(int updateRate, String table, String columnP, String columnE,
                     int xpos, int ypos, int xlength, int ylength, PApplet p) {
@@ -75,7 +73,6 @@ public class PowerGeneration {
         if (p.mouseX > xpos && p.mouseX < xpos + xlength && p.mouseY > ypos && p.mouseY < ypos + ylength && currentDataSelection != 1) {
             currentDataSelection -= repairValue;
             machineDeterioration();
-            System.out.println("clicked");
         }
     }
 

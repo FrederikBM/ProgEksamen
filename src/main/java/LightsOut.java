@@ -112,7 +112,6 @@ public class LightsOut {
         } else {
             if (p.frameCount % updateRate == 0) {
                 vovseXpos -= 15;
-                System.out.println(vovseXpos);
             }
         }
         p.fill(255);
